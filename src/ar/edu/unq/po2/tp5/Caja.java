@@ -1,23 +1,24 @@
 package ar.edu.unq.po2.tp5;
 import java.util.ArrayList;
-import java.util.List;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class Caja {
+public class Caja implements Cobrable, Agencia{
 	
 	Map<Integer, Integer> stockProductos = new HashMap<>();
-	List<Producto> productos	=	new ArrayList<Producto>();
 	double montoAPagar	=	0;
 	
-	public Caja(Map<Integer, Integer>stockProductos, ArrayList<Producto>productos, int montoAPagar ) {
+	public Caja(Map<Integer, Integer>stockProductos ) {
 		this.stockProductos	=	stockProductos;
-		this.productos		=	productos;
-		this.montoAPagar	=	montoAPagar;
 	}
 	
-	public double montoAPagar(){
+	public double getMontoAPagar(){
 		return this.montoAPagar;
+	}
+	
+	public void inicializarMonto() {
+		this.montoAPagar	= 0;
 	}
 	
 	public void setMontoAPagar(double monto) {
@@ -25,7 +26,7 @@ public class Caja {
 	}
 	
 	public int stockDe(Producto producto) {
-		return stockProductos.get(producto.codigo);
+		return stockProductos.get(producto.getCodigo());
 	}
 	
 	public void actualizarStockDe(Producto producto) {
@@ -39,12 +40,38 @@ public class Caja {
 		this.actualizarStockDe(producto);
 	}
 	
-	public void registrarProductos(ArrayList<Producto> productos) {
+	
+	public void cobrarFactura(Factura factura) {
+		setMontoAPagar(factura.montoAPagar());
+		this.registrarPago(factura);
+	}
+
+
+	@Override
+	public double cobrarProductos(ArrayList<Producto> productos) {
+		this.inicializarMonto();
 		productos.forEach(producto -> this.registrarProducto(producto));
+		return this.montoAPagar;
+		
+	}
+	
+	@Override
+	public double cobrarFacturas(ArrayList<Factura> facturas) {
+		this.inicializarMonto();
+		facturas.forEach(factura -> this.cobrarFactura(factura));
+		return this.montoAPagar;
+	}
+
+	@Override
+	public void registrarPago(Factura factura) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 
 }
+
+
 
 
 

@@ -4,13 +4,15 @@ public class ProductoDeCooperativa  extends Producto{
 	int descuento;
 	
 	public ProductoDeCooperativa(int codigo, String nombre, double precio, int descuento) {
-		super(codigo, nombre, precio);
+		this.codigo		=	codigo;
+		this.nombre		=	nombre;
+		this.precio		=	precio - ((precio * descuento) / 100);
 		this.descuento	=	descuento;
 	}
-	
-	@Override
+
 	public double getPrecio() {
-		return super.getPrecio() - (super.getPrecio() * (this.descuento / 100));
+		return this.precio;
 	}
+	
 	
 }

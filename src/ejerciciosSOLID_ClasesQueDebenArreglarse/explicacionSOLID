@@ -1,0 +1,28 @@
+
+
+
+ClienteEmail:
+En la clase cliente se detectaron los siguientes principios solid:
+- Principio de inversion de dependencia:
+	Utilizo la clase concreta ServidorPop y le envío el mensaje de conectar, tendría que usar la interfaz para poder generar una amplitud de nuevos servidores 
+		
+	
+- Principio OpenClose:
+	No permite la extención  sin modificar el código fuente.
+	Ya que permite solo un tipo de correo, el dia de mañana si necesito que sea un correo que permita archivos adjuntos, voy a tener
+	que tocar el código.
+	La solucion para este resolver esto, fue que el metodo reciba un correo y que envie a servidor ese dato, luego
+	lo siguente es crear una clase abstascta Correo, y luego una clase CorreoSimple que herede de correo.
+	ahi genero una abstraccion, le paso al metodo un correo de Tipo Correo, en donde le puedo pasar CorreoSimple o otro si lo
+	necesitara, no limito a que solo tenga un tipo de correo,
+	el dia de mñana, si me pide que el correo tenga otras caracteristicas, hago una subclase con el nuevo requierimiento y que herede 
+	de la claase Correo, luego en la instancia ClienteEmail le paso el correo que cumpla el nuevo requerimiento, y el sistema no se 
+	va a romper, porque le pase un tipo Correo que ella acepta.
+
+
+
+ServidorPop:
+	En la clase ServidorPop se detectaron los siguentes principios solid:
+	Se viola el principio de Segregacion de Interfaz: Implementa la interfaz IServidor pero no necesita todo el contrato de la misma.
+	La solución es dividir la interfaz dada en otras interfaces para que despues ServidorPop implemente solo las que necesita.
+	

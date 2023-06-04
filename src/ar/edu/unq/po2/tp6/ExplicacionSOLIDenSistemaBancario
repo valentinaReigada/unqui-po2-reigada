@@ -1,0 +1,28 @@
+
+
+
+En el sistema bancario se crearon clases concretas y clases abstractas para poder respetar los principios solid.
+
+Este modelo no viola los principios solid porque se tuvo en cuenta la posible extension del código, cada clase mantiene
+una unica responsabilidad, y la comunicacion de clases es con una capa de abstraccion, esta capa la logré haciendo
+clases abstractas.
+
+La clase Banco es la clase de alto nivel, la misma tiene una lista de clientes y solicitudes de creditos. EL banco gestiona 
+operaciones relacionadas a su tarea principal, la cual es: agregar clientes y solicitudes, evaluar creditos y desembolsar el
+credito al cliente que lo solicita.
+
+El Banco tiene relacion con la clase abstracta: Cliente y SolicitudDeCredito. Está implementacion respeta el principio 4, el 
+principio de inversión de dependencia, la clase de alto nivel se comunica mediante abstracciones con las clases de bajo nivel.
+esto genera que el modulo bancario sea independiente de las demas clases y genera que podamos reutilizarlo para otros requerimiento.
+
+El cliente se identifica con la clase abstracta Cliente, se creó la clase ClienteBasico que hereda de Cliente para poder tener
+opcion de agregar diferentes tipos de Clientes.
+El cliente respeta los principios solid, ya que tiene una unica responsabilidad: gestionar sus datos y pedir prestamos al banco.
+
+Las solicitudes de credito se identifican con la clase abstracta SolicitudDeCredito, se creo está clase para poder tener diferentes tipos de solicitudes.
+hasta el momento se tienen dos tipos de solicitudes: CreditoPersonal y CreditoHipotecario, estos tipos son clases concretas que heredan de la clase SolicitudDeCredito.
+Esta implementacion respeta los principios solid, por un lado el principio OPEN CLOSE, ya que se puede ir agregando diferentes tipos de creditos y el banco va a poder
+comunicarse con los mismos, debido a que el banco espera solicitudes de tipo SolicitudDeCredito, el prinicio de sustitucion, ya que las subclases se comportan
+igual que la clase padre, respetan el protocolo.
+
+
