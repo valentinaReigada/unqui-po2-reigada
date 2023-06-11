@@ -4,15 +4,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
+import static org.mockito.Mockito.*;
 
 class ProductoDeCooperativaTestCase {
 	private ProductoDeCooperativa arroz;
-
+	
 	
 	@BeforeEach
 	public void setUp() {
 		arroz = new ProductoDeCooperativa(1, "Arroz", 100.0d, 10);
+		
 	}
 	
 	

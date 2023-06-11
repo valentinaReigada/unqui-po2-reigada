@@ -6,8 +6,8 @@ public class Banco {
 	private List<Cliente> clientes	= new ArrayList<Cliente>();
 	private List<SolicitudDeCredito> solicitudesDeCreditos	=	new ArrayList<SolicitudDeCredito>();
 	
-	public Banco(ArrayList<Cliente> clientes) {
-		this.clientes	=	clientes;
+	public Banco(List<Cliente> listaClientes) {
+		this.clientes	=	listaClientes;
 	}
 	
 	
