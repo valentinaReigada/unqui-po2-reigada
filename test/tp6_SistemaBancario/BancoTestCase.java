@@ -19,7 +19,7 @@ class BancoTestCase {
 	private ClienteBasico cliente1;
 	private ClienteBasico cliente2;
 	private SolicitudDeCredito solicitud;
-	private List<Cliente> listaClientes = new ArrayList<Cliente>();
+	private List<Cliente> listaClientes;
 	
 	//CONFIGURO EL DOC
 	@BeforeEach
@@ -32,6 +32,7 @@ class BancoTestCase {
 		listaClientes.add(cliente2);
 		//SUT
 		banco	=	new Banco(listaClientes);
+		listaClientes	=	new ArrayList<Cliente>();
 	}
 	
 	
@@ -39,9 +40,8 @@ class BancoTestCase {
 	public void elBancoTieneUnaSolicitudRechazada() {
 		when(this.solicitud.cumpleLosRequisitos()).thenReturn(false);
 		assertFalse(solicitud.cumpleLosRequisitos());
-		
-	
-	}
-	
-}
+
+	}	
+	  
+} 
 
